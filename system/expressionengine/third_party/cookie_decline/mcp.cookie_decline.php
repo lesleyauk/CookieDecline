@@ -57,7 +57,14 @@ class Cookie_decline_mcp {
 	{ 
 		$vars = array();
 		
-		$this->EE->cp->set_variable('cp_page_title', $this->EE->lang->line('cookie_decline_module_name'));
+		if ( version_compare( APP_VER, '2.6.0', '<' ) )
+		{
+			$this->EE->cp->set_variable('cp_page_title', $this->EE->lang->line('cookie_decline_module_name'));
+		}
+		else
+		{
+			$this->EE->view->cp_page_title = $this->EE->lang->line('cookie_decline_module_name');
+		}
 
 		$vars['cookie_message'] = $this->EE->lang->line('cookie_decline_message');
 		
